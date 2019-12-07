@@ -124,7 +124,7 @@ Instead of the form mentioned above, the XMPP server SHOULD create a JSON object
 ````json
 {
   "unread": 1,
-  "sender": "juliet@capulet.example/balcony",
+  "sender": "juliet@capulet.example",
   "type": "chat",
   "message": "Wherefore art thou, Romeo?"
 }
