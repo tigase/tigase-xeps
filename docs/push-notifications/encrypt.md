@@ -110,7 +110,7 @@ A [Data Forms: XEP-0004](https://xmpp.org/extensions/xep-0004.html) form with `F
 
 Instead of the form mentioned above, the XMPP server SHOULD create a JSON object with following fields:
 * `unread` - containing a number of unread messages
-* `sender` - containing a bare JID of a stanza sender causing this notification
+* `sender` - containing a JID of a stanza sender causing this notification _(should be bare JID, with exception for JingleMessageInitiation as in this case full JID is required)_
 * `type` - type of the push notification:
 	* `chat` - for 1-1 messages
 	* `groupchat` - for MUC rooms and groupchat messages
@@ -119,6 +119,7 @@ Instead of the form mentioned above, the XMPP server SHOULD create a JSON object
 * `message` - body of a message (if available, MAY be only first part of the message body)
 * `nickname` - in case of a message of `type` `groupchat`, this field should be set to the nickname of the message sender _(optional)_
 * `sid` - in case of a Jingle session initiation, session id of the Jingle call initiated by message _(optional)_
+* `media` - in case of a Jingle call (ie. Jingle Message Intiation) that should be an array of proposed media types _(optional)_
 
 **Example 6.** Payload before encryption
 ````json
@@ -156,7 +157,3 @@ In case of usage AES-GCM,  `<encrypted/>` element SHOULD contain `iv` attribute 
   </pubsub>
 </iq>
 ````
-
-## 5. Questions
-### 5.1. Why use JSON?
-JSON is more lightweight and push notifications providers have a limits for payload length (usually from 2KB to 4KB).
