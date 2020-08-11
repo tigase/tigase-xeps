@@ -16,7 +16,7 @@
 title: Tigase XEPs
 description: Tigase Custom XMPP Extensions
 baseurl: "/" # the subpath of your site, e.g. /blog
-url: "https://tigase.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://xeps.tigase.net/" # the base hostname & protocol for your site, e.g. http://example.com
 #theme: "just-the-docs"
 remote_theme: pmarsceill/just-the-docs
 author: Tigase, Inc.
@@ -40,6 +40,10 @@ heading_anchors: true
 aux_links:
   "Company Site":
     - "//tigase.net"
+  "GitHub":
+    - "//github.com/tigase"
+  "Documentation":
+    - "//docs.tigase.net"
 
 # Footer content appears at the bottom of every page's main content
 footer_content: "Copyright &copy; 2019 Tigase, Inc."
