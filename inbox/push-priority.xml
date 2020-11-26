@@ -69,7 +69,7 @@
 ]]></example>
 </section1>
 <section1 topic='Enabling Push Notifications Priorities' anchor='enable'>
-  <p>To enable this feature XMPP client sends IQ-set with an <enable /> element containing <priority /> element qualified by the 'urn:push:priority:0' namespace:</p>
+  <p>To enable this feature XMPP client sends IQ-set with an &lt;enable /&gt; element containing &lt;priority /&gt; element qualified by the &#39;urn:push:priority:0&#39; namespace:</p>
   <example caption='Enabling feature'><![CDATA[
 <iq type='set' id='x42'>
   <enable xmlns='urn:xmpp:push:0' jid='push-5.client.example' node='yxs32uqsflafdk3iuqo' >
@@ -80,7 +80,7 @@
   <p class='em'>Note: The XMPP client SHOULD enable this feature ONLY if the XMPP server supports all required push notifications filtering.</p>
 </section1>
 <section1 topic='Marking push notification with priority' anchor='marking'>
-  <p>If this feature is enabled and high priority push notification is being sent, the XMPP Server MUST indicate this by adding to the <notification /> element a <priority /> element qualified by the 'urn:xmpp:push:priority:0' namespace with it's value set to 'high':</p>
+  <p>If this feature is enabled and high priority push notification is being sent, the XMPP Server MUST indicate this by adding to the &lt;notification /&gt; element a &lt;priority /&gt; element qualified by the &#39;urn:xmpp:push:priority:0&#39; namespace with it&#39;s value set to &#39;high&#39;:</p>
   <example caption='Notification marked as high priority'><![CDATA[
 <iq type='set'
   from='example.com'
@@ -105,7 +105,7 @@
 ]]></example>
 </section1>
 <section1 topic='Business Rules' anchor='rules'>
-  <p>User's server, with this feature enabled, SHOULD mark all push notifications with 'priority' element which MUST have a value of either 'high' or 'low'.</p>
+  <p>User's server, with this feature enabled, SHOULD mark all push notifications with &lt;priority /&gt; element which MUST have a value of either 'high' or 'low'.</p>
   <p>'high' value MUST only be used when data triggering notification will require notifying XMPP Client's user, ie. incoming message with a body, incoming VoIP call.</p>
   <p>Before applying priority to push notification, user's server MUST properly estimate priority of the notification using data available in the stanza or available to the user's server such as notifications filtering mechanisms.</p>
 </section1>
@@ -127,7 +127,7 @@
   </section2>
 </section1>
 <section1 topic='Design Considerations' anchor='design'>
-  <p>Alternatively to the approach described in this document, it was considered to determine priority of push notification based on existence of &xep0004; of 'FORM_TYPE' equal 'urn:xmpp:push:summary' within 'notification' element defined in &xep0357;. That approach however was not normative as &xep0357; suggests usage of this data form element, but only if summarized information is to be provided. That could lead to assuming that some of high priority notifications are actually a low priority once.</p>
+  <p>Alternatively to the approach described in this document, it was considered to determine priority of push notification based on existence of &xep0004; of 'FORM_TYPE' equal 'urn:xmpp:push:summary' within &lt;notification /&gt; element defined in &xep0357;. That approach however was not normative as &xep0357; suggests usage of this data form element, but only if summarized information is to be provided. That could lead to assuming that some of high priority notifications are actually a low priority once.</p>
 </section1>
 <section1 topic='XML Schema' anchor='schema'>
   <code><![CDATA[
