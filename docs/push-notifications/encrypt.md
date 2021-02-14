@@ -119,7 +119,7 @@ Instead of the form mentioned above, the XMPP server SHOULD create a JSON object
 * `message` - body of a message (if available, MAY be only first part of the message body)
 * `nickname` - in case of a message of `type` `groupchat`, this field should be set to the nickname of the message sender _(optional)_
 * `sid` - in case of a Jingle session initiation, session id of the Jingle call initiated by message _(optional)_
-* `media` - in case of a Jingle call (ie. Jingle Message Intiation) that should be an array of proposed media types _(optional)_
+* `media` - in case of Jingle session initiation (JMI `<propose/>`), list of proposed values of `media` attribute from each proposed `<description/>` element _(optional but required for Jingle session initiation/JMI propose)_
 
 **Example 6.** Payload before encryption
 ````json
@@ -136,6 +136,8 @@ This JSON object SHOULD be serialized to bytes and the encrypted using key and t
 A `<notification />` element SHOULD contain `<encrypted />` element qualified by the `tigase:push:encrypt:0`namespace. Value of this element SHOULD be a Base64 encoded result of the encryption, which in case of the AES-GCM encryption SHOULD contain attached auth tag at the end of encrypted data.
 
 In case of usage AES-GCM,  `<encrypted/>` element SHOULD contain `iv` attribute set to Base64 encoded `iv` parameter of the AES-GCM encoder.
+
+If `<encrypted/>` element is generated in response to the message with `<propose/>` element from [XEP-0353: Jingle Message Initiation](https://xmpp.org/extensions/xep-0353.html#intent), it MUST contains attribute `type` set to `voip` and notification MUST be sent with [`high` priority](https://xeps.tigase.net//docs/push-notifications/priority/). `high` priority MUST NOT be set to any other encrypted notification sent in response to JMI with intent other than `<propose/>`. 
 
 **Example 7.** Server publishes a push notification
 ````xml
